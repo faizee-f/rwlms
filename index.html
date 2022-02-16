@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>RWLMS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+body {font-size:16px;}
+.w3-half img{margin-bottom:-6px;margin-top:16px;opacity:0.8;cursor:pointer}
+.w3-half img:hover{opacity:1}
+</style>
+<body>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>River Water Level<br>Monitoring System</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="#RealTimeData" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Real Time Data</a> 
+    <a href="#Visualisation" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Visualisation</a> 
+    <a href="#RiverInfo" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">River Info</a> 
+    <a href="#DataMart" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Data Source</a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+  </div>
+</nav>
+
+<!-- Top menu on small screens -->
+<header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+  <span>River Water Level Monitoring System</span>
+</header>
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <!-- Header -->
+  <div class="w3-container" style="margin-top:80px" id="RealTimeData">
+    <h1 class="w3-jumbo"><b>River App</b></h1><br>
+    <p>RiverApp is a must have to check river conditions! RiverApp is the ideal web-application for kayakers, water sports enthusiasts, fishermen and anyone with river-related activities. This web-apllication also analyses temperature and humidity of a particular place. A real data of water level and notifications can be obtained</p>
+    <h1 class="w3-xxxlarge w3-text-red"><b>Real Time Data.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+  </div>
+  
+  <!-- Photo grid (modal) -->
+  <div class="w3-row-padding">
+    <div class="w3-half">
+        <h2>Sensor 1</h2>
+        <p>Temperature</p>
+        <iframe width="400" height="260" onclick="onClick(this)" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/widgets/302585"></iframe>
+        <p>Humidity</p>
+        <iframe width="400" height="260" onclick="onClick(this)" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/widgets/306510"></iframe>
+        <p>Water Level</p>
+        <iframe width="400" height="260" onclick="onClick(this)" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/widgets/306511"></iframe>
+        <p>Water Level Warning</p>
+        <iframe width="400" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/widgets/306523"></iframe>
+    </div>
+
+    <div class="w3-half">
+        <h2>Sensor 2</h2>
+        <p>Temperature</p>
+        <iframe width="400" height="260" onclick="onClick(this)" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/widgets/302585"></iframe>
+        <p>Humidity</p>
+        <iframe width="400" height="260" onclick="onClick(this)" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/widgets/306510"></iframe>
+        <p>Water Level</p>
+        <iframe width="400" height="260" onclick="onClick(this)" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/widgets/306511"></iframe>
+        <p>Water Level Warning</p>
+        <iframe width="400" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/widgets/306523"></iframe>
+    </div>
+  </div>
+
+  <!-- Modal for full size images on click-->
+  <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+    <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+    <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+      <img id="img01" class="w3-image">
+      <p id="caption"></p>
+    </div>
+  </div>
+
+  <!-- Visualisation -->
+  <div class="w3-container" id="Visualisation" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Visualisation.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <h2>Sensor 1</h2>
+    <div>
+        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Temperature&type=line"></iframe>
+        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Humidity&type=line"></iframe>
+        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Water+Level&type=line"></iframe>
+    </div>
+    <h2>Sensor 2</h2>
+    <div>
+        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Temperature&type=line"></iframe>
+        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Humidity&type=line"></iframe>
+        <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1361983/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Water+Level&type=line"></iframe>
+    </div>
+</div>  
+  <!-- RiverInfo -->
+  <div class="w3-container" id="RiverInfo" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>River Info.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p><b>Our information are collected from the sensors installed on these locations</b>:</p><br><br>
+  </div>
+
+  <!-- The Team -->
+ <div class="container fluid">
+    <div class="row">
+        <div class="col-xs-7 col-sm-7 col-lg-6">
+            <p>Sensor 1</p>
+          <div class=""><div class="gmap_canvas"><iframe width="450" height="260" id="gmap_canvas" src="https://maps.google.com/maps?q=feroke%20bridge&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org">123movies</a><br><style>.mapouter{position:relative;text-align:right;height:260px;width:450px;}</style><a href="https://www.embedgooglemap.net">embedding maps in website</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:260px;width:450px;}</style></div></div>
+        </div>
+        <div class="col-xs-7 col-sm-7 col-lg-6">
+            <p>Sensor 2</p>
+            <div class="mapouter"><div class="gmap_canvas"><iframe width="450" height="260" id="gmap_canvas" src="https://maps.google.com/maps?q=arappuzha%20bridge&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org">123movies</a><br><style>.mapouter{position:relative;text-align:right;height:260px;width:450px;}</style><a href="https://www.embedgooglemap.net">embedding maps in website</a><style>.gmap_canvas {overflow:hidden;background:none!important;height:260px;width:450px;}</style></div></div>
+        </div>
+      </div>
+ </div>
+        
+      
+  <!-- DataMart / Pricing Tables -->
+  <div class="w3-container" id="DataMart" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Data Source.</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Here You can Download the data for additional visualisation and analysis purposes</p>
+    <p>You can download the data in CSV, XML or in JSON format</p><br>
+  </div>
+
+  <div class="w3-row-padding">
+    <div class="w3-col s4 w3-margin-bottom">
+      <ul class="w3-ul w3-light-grey w3-center">
+        <li class="w3-dark-grey w3-xlarge w3-padding-32">Temperature</li>  
+        <li class="w3-light-grey w3-padding-24">
+            <p>Download as</p>
+          <button class="w3-button w3-white w3-padding-large w3-hover-black" onclick="location.href='https://api.thingspeak.com/channels/1361983/fields/1.csv';">CSV</button>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+            <p>Download as</p>
+            <button class="w3-button w3-white w3-padding-large w3-hover-black" onclick="location.href='https://api.thingspeak.com/channels/1361983/fields/1.xml';">XML</button>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+            <p>Download as</p>
+            <button class="w3-button w3-white w3-padding-large w3-hover-black" onclick="location.href='https://api.thingspeak.com/channels/1361983/fields/1.json';">JSON</button>
+        </li>  
+      </ul>
+    </div>
+        
+    <div class="w3-col s4">
+      <ul class="w3-ul w3-light-grey w3-center">
+        <li class="w3-red w3-xlarge w3-padding-32">Humidity</li>       
+        <li class="w3-light-grey w3-padding-24">
+            <p>Download as</p>
+          <button class="w3-button w3-red w3-padding-large w3-hover-black" onclick="location.href='https://api.thingspeak.com/channels/1361983/fields/2.csv';">CSV</button>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+            <p>Download as</p>
+          <button class="w3-button w3-red w3-padding-large w3-hover-black" onclick="location.href='https://api.thingspeak.com/channels/1361983/fields/2.xml';">XML</button>
+        </li>
+        <li class="w3-light-grey w3-padding-24">
+            <p>Download as</p>
+          <button class="w3-button w3-red w3-padding-large w3-hover-black" onclick="location.href='https://api.thingspeak.com/channels/1361983/fields/2.json';">JSON</button>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-col s4 w3-margin-bottom">
+        <ul class="w3-ul w3-light-grey w3-center">
+          <li class="w3-dark-grey w3-xlarge w3-padding-32">Water Level</li>
+          <li class="w3-light-grey w3-padding-24">
+            <p>Download as</p>
+            <button class="w3-button w3-white w3-padding-large w3-hover-black" onclick="location.href='https://api.thingspeak.com/channels/1361983/fields/3.csv';">CSV</button>
+          </li>
+          <li class="w3-light-grey w3-padding-24">
+            <p>Download as</p>
+            <button class="w3-button w3-white w3-padding-large w3-hover-black" onclick="location.href='https://api.thingspeak.com/channels/1361983/fields/3.xml';">XML</button>
+          </li>
+          <li class="w3-light-grey w3-padding-24">
+            <p>Download as</p>
+            <button class="w3-button w3-white w3-padding-large w3-hover-black" onclick="location.href='https://api.thingspeak.com/channels/1361983/fields/3.json';">JSON</button>
+          </li>
+        </ul>
+      </div>
+      <div class="container-fluid"><br><br><br>
+          <p style="text-align: center;">Youcan download entire data from Here
+            <button class="w3-button w3-white w3-padding-large w3-hover-green" onclick="location.href='https://api.thingspeak.com/channels/1361983/feeds.csv';">CSV</button>
+            <button class="w3-button w3-white w3-padding-large w3-hover-green" onclick="location.href='https://api.thingspeak.com/channels/1361983/feeds.xml';">XML</button>
+            <button class="w3-button w3-white w3-padding-large w3-hover-green" onclick="location.href='https://api.thingspeak.com/channels/1361983/feeds.json';">JSON</button>
+          </p>
+      </div>
+  </div>
+
+  
+
+  <!-- Contact -->
+  <div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge w3-text-red"><b>Contact us</b></h1>
+    <hr style="width:50px;border:5px solid red" class="w3-round">
+    <p>Do you want us to contact us for more informations ? Fill out the form and fill me in with the details :) We love meeting new people!</p>
+    <form action="" target="_blank">
+      <div class="w3-section">
+        <label>Name</label>
+        <input id="cname" class="w3-input w3-border" type="text" name="Name" required>
+      </div>
+      <div class="w3-section">
+        <label>Email</label>
+        <input id="cemail" class="w3-input w3-border" type="email" name="Email" required>
+      </div>
+      <div class="w3-section">
+        <label>Message</label>
+        <input id="cmessage" class="w3-input w3-border" type="text" name="Message" required>
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large w3-red w3-margin-bottom">Send Message</button>
+    </form>  
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- W3.CSS Container -->
+<div class="w3-light-grey w3-container w3-padding-32" style="margin-top:75px;padding-right:58px"><p class="w3-right">Created By Fayis</p></div>
+
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+</script>
+
+</body>
+</html>
