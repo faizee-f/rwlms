@@ -1,0 +1,1 @@
+The project takes, records and visualises the water level, temperature and humidity.It also shows a warning sign whenever the water level exceeds its limit. It also displays real time time data which helps user to observe the live water level, temperature and humidity of a river
